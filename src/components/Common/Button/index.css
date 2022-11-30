@@ -1,0 +1,19 @@
+.button {
+  background-color: white;
+  color: blueviolet;
+  padding: 4px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline;
+  font-size: 8x;
+  transition-duration: 0.6s;
+  cursor: pointer;
+  margin: 2px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+}
+
+.button:hover {
+  background-color: rgb(165, 128, 197);
+  color: white;
+}

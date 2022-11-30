@@ -1,0 +1,11 @@
+.movie-item {
+  max-width: 120px;
+  max-height: 212px;
+}
+
+.skeleton-image {
+  width: 112px;
+  height: 204px;
+  padding: 4px;
+  object-fit: none;
+}
