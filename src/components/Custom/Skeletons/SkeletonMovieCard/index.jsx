@@ -1,6 +1,7 @@
 import React from "react";
 import Card from "../../../Common/Card";
 import { skeleton } from "../../../../utilities/constants/base64images";
+
 import "./index.css";
 
 const SkeletonMovieCard = ({ count }) => {

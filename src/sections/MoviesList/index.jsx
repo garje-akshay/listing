@@ -2,9 +2,10 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import Pagination from "../../components/Custom/Pagination";
 import { fetchMovies } from "../../services/movies";
 import { MOVIES } from "../../utilities/constants/apiRoutes";
-import "./index.css";
 import MovieCard from "./MovieCard";
 import SkeletonMovieCard from "../../components/Custom/Skeletons/SkeletonMovieCard";
+
+import "./index.css";
 
 const MoviesList = () => {
   const activePage = useRef(1);
