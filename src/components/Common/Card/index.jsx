@@ -1,8 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 import "./index.css";
 
 const Card = (props) => {
   return <span className="card">{props.children}</span>;
 };
 
-export default Card;
+export default memo(Card);

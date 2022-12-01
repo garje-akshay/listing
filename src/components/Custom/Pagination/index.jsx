@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import Translation from "../../../utilities/translation/Translation";
 import Button from "../../Common/Button";
 
@@ -14,7 +14,7 @@ const style = {
 
 const Pagination = ({ total, getPageData, activePage }) => {
   const handleOnPageButtonClick = (page) => {
-    getPageData(page);
+    if (activePage != page) getPageData(page);
   };
 
   const handleOnNextClick = () => {
@@ -31,22 +31,9 @@ const Pagination = ({ total, getPageData, activePage }) => {
       <Button onClick={handleOnPrevClick}>
         <Translation>prev</Translation>
       </Button>
-      {/*
-      //Shows All Buttons 
-      Array.from({ length: Math.ceil(total / 10) }, (v, i) => i + 1).map(
-        (n) => (
-          <Button
-            style={n === activePage ? style.active : {}}
-            key={n}
-            onClick={() => handleOnPageButtonClick(n)}
-          >
-            {n}
-          </Button>
-        )
-      )*/}
 
       <Button
-        style={activePage == 1 ? style.hide : {}}
+        style={activePage === 1 ? style.hide : {}}
         key={activePage - 1}
         onClick={() => handleOnPageButtonClick(activePage - 1)}
       >
@@ -62,7 +49,7 @@ const Pagination = ({ total, getPageData, activePage }) => {
       </Button>
 
       <Button
-        style={activePage == Math.ceil(total / 10) ? style.hide : {}}
+        style={activePage === Math.ceil(total / 10) ? style.hide : {}}
         key={activePage + 1}
         onClick={() => handleOnPageButtonClick(activePage + 1)}
       >

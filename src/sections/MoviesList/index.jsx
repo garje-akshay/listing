@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Pagination from "../../components/Custom/Pagination";
 import { fetchMovies } from "../../services/movies";
 import { MOVIES } from "../../utilities/constants/apiRoutes";
@@ -12,17 +12,19 @@ const MoviesList = () => {
   const [loading, setLoading] = useState(false);
   const [movies, setMovies] = useState({});
 
+  //set active page
   const setActivePage = (page) => {
     activePage.current = page;
   };
 
-  const getMovies = useCallback((page) => {
+  //get movies from api for given page
+  const getMovies = (page) => {
     setLoading(true);
     fetchMovies(MOVIES, {
       s: "marvel",
       page: page,
     }).then((response) => {
-      if (response.Response == "True") {
+      if (response.Response === "True") {
         setMovies((prev) => {
           return { ...prev, [page]: response };
         });
@@ -30,8 +32,9 @@ const MoviesList = () => {
         setLoading(false);
       }
     });
-  }, []);
+  };
 
+  //get movies from memoized object for given page
   const getMoviesFromLocal = (page) => {
     setMovies((prev) => {
       return { ...prev };
@@ -39,14 +42,17 @@ const MoviesList = () => {
     setActivePage(page);
   };
 
+  //initial call
   useEffect(() => {
     getMovies(activePage.current);
   }, []);
 
+  //check is memoized data availble
   const checkIsPageDataAvailable = (page) => {
     return movies?.[page] === undefined;
   };
 
+  //get page data
   const getPageData = (page) => {
     checkIsPageDataAvailable(page) ? getMovies(page) : getMoviesFromLocal(page);
   };

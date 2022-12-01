@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import Card from "../../../Common/Card";
 import { skeleton } from "../../../../utilities/constants/base64images";
 
@@ -18,4 +18,4 @@ const SkeletonMovieCard = ({ count }) => {
   );
 };
 
-export default SkeletonMovieCard;
+export default memo(SkeletonMovieCard);
